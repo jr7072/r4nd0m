@@ -84,3 +84,20 @@ let Messages = {
     },
 
 };
+
+const chooseRandTemplate = () => {
+
+    //variable for template object
+    messageTemplates = Message.Templates;
+
+    //creates an array of templates to choose from
+    const templateKeys = Object.keys(messageTemplates);
+    //generating an index for templates
+    const templateKeyIndex = Math.floor(Math.random() * 2);
+    //assigned random template
+    const template = templateKeys[templateKeyIndex];
+
+    //return template
+    return messageTemplates[template];
+}
+
