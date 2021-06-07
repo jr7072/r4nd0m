@@ -1,6 +1,6 @@
 
 //topic of all messages
-const topic = "computer messages";
+const topic = "computer notifications";
 
 
 //holds components to create a new message

@@ -9,7 +9,7 @@
 
 ## General Info
 ----------------
-Generates a random message based on a specific topic using basic javascript and node.js.
+Generates a random message with topic of "Computer Notifications" using basic javascript and node.js.
 
 ## Technologies
 ----------------
