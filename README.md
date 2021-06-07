@@ -25,7 +25,7 @@ Project is created with:
     $git clone https://github.com/jr7072/r4nd0m-.git
     ```
 
-2. To run locally:
+2. run locally:
     
     ```
     $node r4nd0m.js

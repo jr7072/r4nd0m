@@ -22,7 +22,7 @@ let Messages = {
 
             Critical : [
 
-                "above 90 degrees Fareignheight",
+                "above 90 degrees fahrenheit",
                 "not connected properly",
                 "recieving a high voltage",
             ],
@@ -198,7 +198,7 @@ const generateMessage = (templateChosen, componentsArr) => {
 }
 
 let finalTemplate = chooseRandTemplate();
-let finalComponents = generateComponents(testTemplate);
-let finalMessage = generateMessage(testTemplate, testComArr);
+let finalComponents = generateComponents(finalTemplate);
+let finalMessage = generateMessage(finalTemplate, finalComponents);
 
 console.log(finalMessage);
