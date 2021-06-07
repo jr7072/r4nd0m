@@ -19,10 +19,17 @@ Project is created with:
 + Node.js v16.2.0.
 
 ## Setup
-To run locally:
+1. clone :
+    
+    ```
+    $git clone https://github.com/jr7072/r4nd0m-.git
+    ```
 
+2. To run locally:
+    
+    ```
     $node r4nd0m.js
-
+    ```
 
 
 
