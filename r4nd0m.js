@@ -110,33 +110,26 @@ const chooseRandTemplate = () => {
 }
 
 //FIXME : need to modify for new method.
-/*
+
 const generateComponents = (templateChosen) => {
 
     //variable for Components object
-    messageComponents = Message.Components;
+    messageComponents = Messages.Components;
 
     //getting parts component
-    partsLength = messageComponents.parts.length;
+    partsLength = messageComponents.Parts.length;
     partIndex = Math.floor(Math.random() * partsLength);
-    partChosen = messageComponents.parts[partIndex];
+    partChosen = messageComponents.Parts[partIndex];
 
-    //creating variable for template key 
-    let templateKey;
-    
-    //getting templates key.
-    for (const key of Object.keys(Message.Templates)){
-        Message.Templates[key] === templateChosen ? eventKey = key : null;
-    }
 
     //getting event component
-    events = messageComponents.Event[templateKey];
+    events = messageComponents.Events[templateChosen];
     eventsLength = events.length;
     eventIndex = Math.floor(Math.random() * eventsLength);
     eventChosen = events[eventIndex];
 
     //getting action component
-    actions = messageComponents.Action[templateKey];
+    actions = messageComponents.Actions[templateChosen];
     actionLength = actions.length;
     actionIndex = Math.floor(Math.random() * actionLength);
     actionChosen = actions[actionIndex];
@@ -144,6 +137,5 @@ const generateComponents = (templateChosen) => {
     componentsChosen = [partChosen, eventChosen, actionChosen];
 
     return componentsChosen;
-}*/
+}
 
-console.log(chooseRandTemplate())
