@@ -18,7 +18,7 @@ let Messages = {
         ],
 
         //eventChosen variables 
-        Event : {
+        Events : {
 
             Critical : [
 
@@ -46,7 +46,7 @@ let Messages = {
         },
 
         //action chosen variables
-        Action : {
+        Actions : {
             
             Critical : [
 
@@ -75,29 +75,75 @@ let Messages = {
         },
     },
 
+    templates : ["Critical", "Concern", "Casual"],
+
     //templates take in component's variables to create a message.
-    Templates : {
+    makeTemplates (partPassed, eventPassed, actionPassed){
+        
+        let Template = {
 
-        Critical : `${partChosen} is in critical condition! it is ${eventChosen}. You should ${actionChosen}!`,
-        Concern : `The ${partChosen} is acting strange. It is ${eventChosen}. You should ${actionChosen}.`,
-        Casual :  `${partChosen} is working properly. It is ${eventChosen}, You should ${actionChosen}.`,
+            partChosen : partPassed,
+            eventChosen : eventPassed,
+            actionChosen : actionPassed,
+            
+            Critical : `${this.partChosen} is in critical condition! it is ${this.eventChosen}. You should ${this.actionChosen}!`,
+            Concern : `The ${this.partChosen} is acting strange. It is ${this.eventChosen}. You should ${this.actionChosen}.`,
+            Casual :  `${this.partChosen} is working properly. It is ${this.eventChosen}, You should ${this.actionChosen}.`,
+        };
+        
+        return Template;
     },
-
 };
 
 const chooseRandTemplate = () => {
 
-    //variable for template object
-    messageTemplates = Message.Templates;
+    //variable for templates array
+    templateArray = Messages.templates;
+    //random index and templateArray length
+    templateArrLength = templateArray.length;
+    templateIndex = Math.floor(Math.random() * templateArrLength);
 
-    //creates an array of templates to choose from
-    const templateKeys = Object.keys(messageTemplates);
-    //generating an index for templates
-    const templateKeyIndex = Math.floor(Math.random() * 2);
-    //assigned random template
-    const template = templateKeys[templateKeyIndex];
+    //assigning random template indicator
+    templateChosen = templateArray[templateIndex];
 
-    //return template
-    return messageTemplates[template];
+    return templateChosen;
 }
 
+//FIXME : need to modify for new method.
+/*
+const generateComponents = (templateChosen) => {
+
+    //variable for Components object
+    messageComponents = Message.Components;
+
+    //getting parts component
+    partsLength = messageComponents.parts.length;
+    partIndex = Math.floor(Math.random() * partsLength);
+    partChosen = messageComponents.parts[partIndex];
+
+    //creating variable for template key 
+    let templateKey;
+    
+    //getting templates key.
+    for (const key of Object.keys(Message.Templates)){
+        Message.Templates[key] === templateChosen ? eventKey = key : null;
+    }
+
+    //getting event component
+    events = messageComponents.Event[templateKey];
+    eventsLength = events.length;
+    eventIndex = Math.floor(Math.random() * eventsLength);
+    eventChosen = events[eventIndex];
+
+    //getting action component
+    actions = messageComponents.Action[templateKey];
+    actionLength = actions.length;
+    actionIndex = Math.floor(Math.random() * actionLength);
+    actionChosen = actions[actionIndex];
+
+    componentsChosen = [partChosen, eventChosen, actionChosen];
+
+    return componentsChosen;
+}*/
+
+console.log(chooseRandTemplate())
