@@ -82,13 +82,9 @@ let Messages = {
         
         let Template = {
 
-            partChosen : partPassed,
-            eventChosen : eventPassed,
-            actionChosen : actionPassed,
-            
-            Critical : `${this.partChosen} is in critical condition! it is ${this.eventChosen}. You should ${this.actionChosen}!`,
-            Concern : `The ${this.partChosen} is acting strange. It is ${this.eventChosen}. You should ${this.actionChosen}.`,
-            Casual :  `${this.partChosen} is working properly. It is ${this.eventChosen}, You should ${this.actionChosen}.`,
+            Critical : `${partPassed} is in critical condition! it is ${eventPassed}. You should ${actionPassed}!`,
+            Concern : `The ${partPassed} is acting strange. It is ${eventPassed}. You should ${actionPassed}.`,
+            Casual :  `${partPassed} is working properly. It is ${eventPassed}, You should ${actionPassed}.`,
         };
         
         return Template;
@@ -97,6 +93,11 @@ let Messages = {
 
 const chooseRandTemplate = () => {
 
+    //setting variables
+    let templateArray;
+    let templateArrLength;
+    let templateIndex
+
     //variable for templates array
     templateArray = Messages.templates;
     //random index and templateArray length
@@ -104,7 +105,7 @@ const chooseRandTemplate = () => {
     templateIndex = Math.floor(Math.random() * templateArrLength);
 
     //assigning random template indicator
-    templateChosen = templateArray[templateIndex];
+    let templateChosen = templateArray[templateIndex];
 
     return templateChosen;
 }
@@ -113,29 +114,92 @@ const chooseRandTemplate = () => {
 
 const generateComponents = (templateChosen) => {
 
+    //setting variables
+    let messageComponents;
+
     //variable for Components object
     messageComponents = Messages.Components;
 
+    //setting variables
+    let partsLength;
+    let partIndex;
+    let part;
+    
     //getting parts component
     partsLength = messageComponents.Parts.length;
     partIndex = Math.floor(Math.random() * partsLength);
-    partChosen = messageComponents.Parts[partIndex];
+    part = messageComponents.Parts[partIndex];
 
-
+    //setting variables
+    let events;
+    let eventsLength;
+    let eventIndex;
+    let event;
+    
     //getting event component
     events = messageComponents.Events[templateChosen];
     eventsLength = events.length;
     eventIndex = Math.floor(Math.random() * eventsLength);
-    eventChosen = events[eventIndex];
+    event = events[eventIndex];
+
+    //setting variables\
+    let actions;
+    let actionLength;
+    let actionIndex;
+    let action;
 
     //getting action component
     actions = messageComponents.Actions[templateChosen];
     actionLength = actions.length;
     actionIndex = Math.floor(Math.random() * actionLength);
-    actionChosen = actions[actionIndex];
+    action = actions[actionIndex];
 
-    componentsChosen = [partChosen, eventChosen, actionChosen];
+    let componentsChosen = [part, event, action];
 
     return componentsChosen;
 }
 
+const generateMessage = (templateChosen, componentsArr) => {
+
+    //setting variables
+    let partChosen;
+    let eventChosen;
+    let actionChosen;
+    const componentsLength = componentsArr.length;
+    
+    for (let i = 0 ; i < componentsLength; ++i){
+        
+        switch (i){
+            
+            case 0:
+                
+                partChosen = componentsArr[i];
+                break;
+            
+            case 1:
+
+                eventChosen = componentsArr[i];
+                break;
+
+            case 2:
+                
+                actionChosen = componentsArr[i];
+                break;
+        }
+    }
+
+    //passing variables to templates
+    const templates = Messages.makeTemplates(partChosen, eventChosen, actionChosen);
+
+    //setting message
+    const message = templates[templateChosen];
+
+    return message;
+}
+
+let testTemplate = chooseRandTemplate();
+let testComArr = generateComponents(testTemplate);
+console.log(testComArr);
+let testMessage = generateMessage(testTemplate, testComArr);
+
+console.log(testMessage);
