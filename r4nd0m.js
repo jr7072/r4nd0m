@@ -197,9 +197,8 @@ const generateMessage = (templateChosen, componentsArr) => {
     return message;
 }
 
-let testTemplate = chooseRandTemplate();
-let testComArr = generateComponents(testTemplate);
-console.log(testComArr);
-let testMessage = generateMessage(testTemplate, testComArr);
+let finalTemplate = chooseRandTemplate();
+let finalComponents = generateComponents(testTemplate);
+let finalMessage = generateMessage(testTemplate, testComArr);
 
-console.log(testMessage);
+console.log(finalMessage);
