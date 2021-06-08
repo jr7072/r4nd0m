@@ -110,7 +110,6 @@ const chooseRandTemplate = () => {
     return templateChosen;
 }
 
-//FIXME : need to modify for new method.
 
 const generateComponents = (templateChosen) => {
 
